@@ -36,6 +36,5 @@ class FileStorage:
                     obj = BaseModel()
                     obj.__dict__.update(obj_dict)
                     FileStorage.__objects[key] = obj
-
         except FileNotFoundError:
             pass
