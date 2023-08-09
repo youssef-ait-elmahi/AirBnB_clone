@@ -7,6 +7,9 @@ class FileStorage:
     __objects = {}
 
     def all(self):
+        """
+        Retrieve and access to the stored objects (__objects)
+        """
         return FileStorage.__objects
 
     def new(self, obj):
