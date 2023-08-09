@@ -14,11 +14,17 @@ class FileStorage:
         FileStorage.__objects[key] = obj
 
     def save(self):
-        d = {}
+        """
+        Serialize and store __objects as JSON in
+        the designated file (__file_path).
+        """
+        data = {}
+
         for key, obj in FileStorage.__objects.items():
-            d[key] = obj.to_dict()
-        with open(FileStorage.__file_path, "w") as f:
-            json.dump(d, f)
+            data[key] = obj.to_dict()
+
+        with open(FileStorage.__file_path, "w") as file:
+            json.dump(data, file)
 
     def reload(self):
         try:
