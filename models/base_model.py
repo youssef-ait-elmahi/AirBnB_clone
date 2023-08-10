@@ -1,6 +1,6 @@
 import uuid
 from datetime import datetime
-from models.engines.file_storage import FileStorage
+import models
 
 
 class BaseModel:
@@ -15,7 +15,7 @@ class BaseModel:
                 if key != "__class__":
                     setattr(self, key, value)
         else:
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         return "[{}] ({}) {}".format(
@@ -23,7 +23,7 @@ class BaseModel:
 
     def save(self):
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         tmp = {}
@@ -32,6 +32,6 @@ class BaseModel:
         for key, value in d.items():
             if key == "created_at" or key == "updated_at":
                 tmp[key] = value.isoformat()
-                d["created_at"] = self.created_at.isoformat()
-                d["updated_at"] = self.updated_at.isoformat()
-        return d
+            else:
+                tmp[key] = value
+        return tmp
