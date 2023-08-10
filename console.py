@@ -95,10 +95,14 @@ class HBNBCommand(cmd.Cmd):
             else:
                 obj = instances[key]
                 attr_name = args[2]
-                attr_type = type(getattr(obj, attr_name))
-                attr_value = attr_type(args[3].strip('"'))
-                setattr(obj, attr_name, attr_value)
-                obj.save()
+                # Check if attribute exists on instance
+                if not hasattr(obj, attr_name):
+                    print("** attribute doesn't exist **")
+                else:
+                    attr_type = type(getattr(obj, attr_name))
+                    attr_value = attr_type(args[3].strip('"'))
+                    setattr(obj, attr_name, attr_value)
+                    obj.save()
 
     def do_quit(self, arg):
         """Quit command to exit the program"""

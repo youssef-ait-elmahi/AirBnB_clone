@@ -4,10 +4,11 @@ import models
 
 
 class BaseModel:
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, first_name=None, **kwargs):
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
+        self.first_name = first_name
         if kwargs:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
@@ -31,7 +32,11 @@ class BaseModel:
         d["__class__"] = self.__class__.__name__
         for key, value in d.items():
             if key == "created_at" or key == "updated_at":
-                tmp[key] = value.isoformat()
+                # Check if value is a datetime object
+                if isinstance(value, datetime):
+                    tmp[key] = value.isoformat()
+                else:
+                    tmp[key] = value
             else:
                 tmp[key] = value
         return tmp
