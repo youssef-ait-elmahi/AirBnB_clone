@@ -46,5 +46,5 @@ class FileStorage:
         for k, v in data.items():
             name = k.split(".")[0]
             FileStorage.__objects[k] = CLASSES[name](**v)
-        
+
         return FileStorage.__objects
