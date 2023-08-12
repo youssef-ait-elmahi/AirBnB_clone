@@ -5,8 +5,24 @@ FileStorage class for storing and retrieving objects.
 
 import json
 from models.base_model import BaseModel
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
 import os
 
+
+classes = {
+        "BaseModel": BaseModel,
+        "User": User,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review,
+}
 
 class FileStorage:
     """
@@ -54,6 +70,6 @@ class FileStorage:
         FileStorage.__objects = {}
         for k, v in data.items():
             name = k.split(".")[0]
-            FileStorage.__objects[k] = CLASSES[name](**v)
+            FileStorage.__objects[k] = classes[name](**v)
 
         return FileStorage.__objects

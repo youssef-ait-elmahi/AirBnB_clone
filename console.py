@@ -10,8 +10,16 @@ Usage:
     Run this module as a standalone script to start the interactive CLI.
 """
 import cmd
+import json
 from models import storage
 from models.base_model import BaseModel
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
+import os
 
 
 class HBNBCommand(cmd.Cmd):
@@ -23,7 +31,15 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = '(hbnb) '
-    classes = ['BaseModel']
+    classes = {
+        "BaseModel": BaseModel,
+        "User": User,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review,
+        }
 
     def do_create(self, arg):
         """Creates a new instance of BaseModel, saves it \
