@@ -5,6 +5,13 @@ from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
+    """
+    Command-line interface for managing objects in the HBNB application.
+
+    Args:
+        cmd.Cmd: The base class for implementing command-line interpreters.
+    """
+
     prompt = '(hbnb) '
     classes = ['BaseModel']
 
