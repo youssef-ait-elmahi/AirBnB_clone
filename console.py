@@ -1,4 +1,14 @@
 #!/usr/bin/python3
+"""
+Console module for managing objects in the HBNB application.
+
+This module provides a command-line interface (CLI) for interacting with the
+HBNB application. It supports commands for creating, showing, updating,
+deleting, and listing instances of BaseModel.
+
+Usage:
+    Run this module as a standalone script to start the interactive CLI.
+"""
 import cmd
 from models import storage
 from models.base_model import BaseModel
