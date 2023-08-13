@@ -128,8 +128,11 @@ class HBNBCommand(cmd.Cmd):
             else:
                 obj = instances[key]
                 attr_name = args[2]
-                attr_type = type(getattr(obj, attr_name))
-                attr_value = attr_type(args[3].strip('"'))
+                if hasattr(obj, attr_name):
+                    attr_type = type(getattr(obj, attr_name))
+                    attr_value = attr_type(args[3].strip('"'))
+                else:
+                    attr_value = args[3].strip('"')
                 setattr(obj, attr_name, attr_value)
                 obj.save()
 
