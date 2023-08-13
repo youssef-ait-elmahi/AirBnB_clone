@@ -74,7 +74,7 @@ Once the console is running, you can start interacting with it by entering comma
 
 ## Author
 
-This AirBnB clone console was developed by [Your Name].
+This AirBnB clone console was developed by youssef-ait-elmahi <youssefaitelmahi@gmail.com>, Ahmed kel <ahmedkeloch@gmail.com>
 
 ## License
 
