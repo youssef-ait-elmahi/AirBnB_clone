@@ -61,8 +61,7 @@ class TestBaseModel(unittest.TestCase):
         model.name = "My First Model"
         model.my_number = 89
 
-        expected_output = "[BaseModel] ({}) {}"
-        .format(model.id, model.__dict__)
+        expected_output = f"[BaseModel] ({model.id}) {model.__dict__}"
         self.assertEqual(str(model), expected_output)
 
 
