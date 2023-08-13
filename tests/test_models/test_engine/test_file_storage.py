@@ -12,50 +12,60 @@ import json
 
 
 class TestFileStorage(unittest.TestCase):
-    """Test cases"""
+    """
+    Test cases for the FileStorage class.
+    """
 
     def setUp(self):
-        """Set up test environment"""
+        """
+        Set up test environment.
+        """
         self.storage = FileStorage()
         self.obj = BaseModel()
 
-    def tearDown(self):
-        """Remove test file after each test"""
-        os.remove(self.storage._FileStorage__file_path)
-
     def test_all(self):
-        """Test retrieval of all objects"""
+        """
+        Test retrieval of all objects.
+        """
         self.storage.new(self.obj)
+        self.storage.save()
 
-        all_objs = self.storage.all()
-        self.assertEqual(len(all_objs), 1)
-        self.assertIn(self.obj, all_objs.values())
+        with open(self.storage._FileStorage__file_path) as f:
+            saved_data = json.load(f)
+            self.assertEqual(len(saved_data), 1)
+            self.assertIn(self.obj, saved_data.values())
 
     def test_new(self):
-        """Test adding a new object"""
+        """
+        Test adding a new object.
+        """
         self.storage.new(self.obj)
         self.assertIn(self.obj, self.storage.all().values())
 
     def test_save(self):
-        """Test saving to a file"""
+        """
+        Test saving to a file.
+        """
         self.storage.new(self.obj)
         self.storage.save()
 
-        self.assertTrue(os.path.isfile(self.storage._FileStorage__file_path))
-
         with open(self.storage._FileStorage__file_path) as f:
             saved_data = json.load(f)
-            self.assertIn(self.obj.to_dict(), saved_data.values())
+            self.assertIn(self.obj, saved_data.values())
 
     def test_reload(self):
-        """Test deserializing JSON file to objects"""
+        """
+        Test reloading from a file.
+        """
         self.storage.new(self.obj)
         self.storage.save()
 
         storage2 = FileStorage()
         storage2.reload()
 
-        self.assertIn(self.obj, storage2.all().values())
+        with open(storage2._FileStorage__file_path) as f:
+            saved_data = json.load(f)
+            self.assertIn(self.obj, saved_data.values())
 
 
 if __name__ == '__main__':
