@@ -6,6 +6,7 @@ it's also is a subclass of BaseModel.
 
 from models.base_model import BaseModel
 
+
 class State(BaseModel):
     """
     State class that inherits from BaseModel.
