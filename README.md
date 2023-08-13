@@ -1,3 +1,6 @@
+
+<img align="center" src="https://i.ibb.co/d5N85Nh/hbnb.png">
+
 # 0x00. AirBnB Clone - The Console
 
 This repository contains the code for an AirBnB clone console. The console is a command-line interface (CLI) application that allows users to interact with the AirBnB clone project. Users can manage objects like User, Place, State, City, Amenity, and Review, create, update, delete, and retrieve data, and perform various operations using commands.
