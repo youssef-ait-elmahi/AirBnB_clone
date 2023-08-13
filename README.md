@@ -6,7 +6,7 @@ This repository contains the code for an AirBnB clone console. The console is a 
 
 1. Clone this repository to your local machine.
    ```
-   git clone https://github.com/yourusername/AirBnB_clone.git
+   git clone https://github.com/youssef-ait-elmahi/AirBnB_clone.git
    ```
 
 2. Navigate to the cloned directory.
