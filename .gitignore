@@ -1,4 +1,6 @@
 __pycache__/
+.gitignore
+tests/test_models/test_engine/__pycache__/
 *.pyc
 *.swp
 file.json
