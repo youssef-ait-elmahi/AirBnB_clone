@@ -3,10 +3,11 @@
 """Unittests for AirBnB clone User model."""
 
 import unittest
-from models.base_model import BaseModel  
+from models.base_model import BaseModel
 from models.user import User
 from models.engine.file_storage import FileStorage
 import os
+
 
 class TestUser(unittest.TestCase):
 
@@ -39,7 +40,11 @@ class TestUser(unittest.TestCase):
         old_created_at = self.user.created_at
         self.user.save()
         self.assertNotEqual(old_created_at, self.user.created_at)
-        self.assertIn("User." + self.user.id, FileStorage._FileStorage__objects)
+        self.assertIn(
+            "User." + self.user.id,
+            FileStorage._FileStorage__objects
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
